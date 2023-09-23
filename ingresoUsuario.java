@@ -6,54 +6,66 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-public class MyPanel extends JPanel {
-    private JButton botonLogin;
-    private JLabel mensajeBienvenida;
-    private JLabel mensajoIngreso;
-    private JLabel usuario;
-    private JTextField jcomp5;
-    private JLabel jcomp6;
-    private JPasswordField jcomp7;
+    public class Sofiii extends JPanel {
+        private JButton botonLogin;
+        private JLabel mensajeBienvenida;
+        private JLabel mensajoIngreso;
+        private JLabel lbusuario;
+        private JTextField idUsuario;
+        private JLabel lbContraseña;
+        private JPasswordField idPasword;
 
-    public MyPanel() {
-        //construct components
-        botonLogin = new JButton ("Log In");
-        mensajeBienvenida = new JLabel ("Bienvenid@ a JustFeel ");
-        mensajoIngreso = new JLabel ("Ingresa tus datos para iniciar sesión ");
-        usuario = new JLabel ("Usuario: ");
-        jcomp5 = new JTextField (5);
-        jcomp6 = new JLabel ("Contraseña:");
-        jcomp7 = new JPasswordField (5);
+        public Sofiii() {
+            //construct components
+            botonLogin = new JButton("Log In");
+            mensajeBienvenida = new JLabel("Bienvenid@ a JustFeel ");
+            mensajoIngreso = new JLabel("Ingresa tus datos para iniciar sesión ");
+            lbusuario = new JLabel("Usuario: ");
+            idUsuario = new JTextField(5);
+            lbContraseña = new JLabel("Contraseña:");
+            idPasword = new JPasswordField(5);
 
-        //adjust size and set layout
-        setPreferredSize (new Dimension (334, 284));
-        setLayout (null);
+            //adjust size and set layout
+            setPreferredSize(new Dimension(300, 220));
+            setLayout(null);
 
-        //add components
-        add (botonLogin);
-        add (mensajeBienvenida);
-        add (mensajoIngreso);
-        add (usuario);
-        add (jcomp5);
-        add (jcomp6);
-        add (jcomp7);
+            //add components
+            add(botonLogin);
+            add(mensajeBienvenida);
+            add(mensajoIngreso);
+            add(lbusuario);
+            add(idUsuario);
+            add(lbContraseña);
+            add(idPasword);
 
-        //set component bounds (only needed by Absolute Positioning)
-        botonLogin.setBounds (120, 185, 100, 20);
-        mensajeBienvenida.setBounds (95, 20, 145, 25);
-        mensajoIngreso.setBounds (60, 55, 220, 20);
-        usuario.setBounds (60, 90, 100, 25);
-        jcomp5.setBounds (115, 90, 160, 25);
-        jcomp6.setBounds (55, 130, 100, 25);
-        jcomp7.setBounds (130, 130, 145, 25);
+            //set component bounds (only needed by Absolute Positioning)
+            botonLogin.setBounds(120, 185, 100, 20);
+            mensajeBienvenida.setBounds(95, 20, 145, 25);
+            mensajoIngreso.setBounds(60, 55, 220, 20);
+            lbusuario.setBounds(60, 90, 100, 25);
+            idUsuario.setBounds(115, 90, 160, 25);
+            lbContraseña.setBounds(55, 130, 100, 25);
+            idPasword.setBounds(130, 130, 145, 25);
+
+
+            // Agregar un ActionListener al botón de inicio de sesión
+            botonLogin.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Obtener el texto ingresado por el usuario en las cajas de texto
+                    String usuario = idUsuario.getText();
+                    String contraseña = new String(idPasword.getPassword());
+                    JOptionPane.showMessageDialog(Sofiii.this, "Inicio de sesión exitoso");                    
+                }
+            });
+
+        }
+
+        public static void main (String[] args) {
+            JFrame frame = new JFrame ("Sofiii");
+            frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add (new Sofiii());
+            frame.pack();
+            frame.setVisible (true);
+        }
     }
-
-
-    public static void main (String[] args) {
-        JFrame frame = new JFrame ("MyPanel");
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add (new MyPanel());
-        frame.pack();
-        frame.setVisible (true);
-    }
-}
