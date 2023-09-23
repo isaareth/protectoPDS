@@ -34,6 +34,14 @@ public class MyPanel extends JPanel {
         emocion.setBounds (110, 75, 120, 25);
         entorno.setBounds (105, 105, 145, 30);
         botonGuardar.setBounds (115, 145, 100, 25);
+
+        // Agregar un ActionListener al botón 
+            botonGuardar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(MyPanel.this, "Información Guardada Exitosamente");                    
+                }
+            });
     }
 
 
